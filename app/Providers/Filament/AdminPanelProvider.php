@@ -34,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->font('Poppins' )
             ->brandLogo(asset('images/hostinger-logo.png'))
             ->favicon( asset('images\favicon.png') )
+            ->darkMode(true)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
