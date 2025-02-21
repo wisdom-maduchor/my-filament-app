@@ -23,7 +23,18 @@ class TimetableResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('class_id')
+                    // ->relationship('classes', 'name')
+                    ->required(),
+                Forms\Components\Select::make('subject_id')
+                    // ->relationship('subject', 'name')
+                    ->required(),
+                Forms\Components\Select::make('teacher_id')
+                    // ->relationship('teacher', 'first_name')
+                    ->required(),
+                Forms\Components\DatePicker::make('date')->required(),
+                Forms\Components\TimePicker::make('start_time')->required(),
+                Forms\Components\TimePicker::make('end_time')->required(),
             ]);
     }
 
@@ -31,7 +42,12 @@ class TimetableResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('classes.name')->label('Class'),
+                Tables\Columns\TextColumn::make('subject.name')->label('Subject'),
+                Tables\Columns\TextColumn::make('teacher.first_name')->label('Teacher'),
+                Tables\Columns\TextColumn::make('date')->date(),
+                Tables\Columns\TextColumn::make('start_time'),
+                Tables\Columns\TextColumn::make('end_time'),
             ])
             ->filters([
                 //

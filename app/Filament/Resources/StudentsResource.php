@@ -6,6 +6,9 @@ use App\Filament\Resources\StudentsResource\Pages;
 use App\Filament\Resources\StudentsResource\RelationManagers;
 use App\Models\Students;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,6 +27,14 @@ class StudentsResource extends Resource
         return $form
             ->schema([
                 //
+                textInput::make('first_name')->required(),
+                textInput::make('last_name')->required(),
+                textInput::make('email')->email()->required(),
+                textInput::make('phone'),
+                DatePicker::make('date_of_birth'),
+                Select::make('classes_id')
+                    // ->relationship('classSection', 'name')
+                    ->placeholder('Select Class Section'),
             ]);
     }
 
@@ -32,6 +43,10 @@ class StudentsResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\TextColumn::make('first_name'),
+                Tables\Columns\TextColumn::make('last_name'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('classSection.name')->label('Class'),
             ])
             ->filters([
                 //

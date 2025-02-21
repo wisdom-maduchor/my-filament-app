@@ -23,7 +23,8 @@ class SubjectsResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\Textarea::make('description'),
             ]);
     }
 
@@ -31,7 +32,8 @@ class SubjectsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description')->limit(50),
             ])
             ->filters([
                 //
