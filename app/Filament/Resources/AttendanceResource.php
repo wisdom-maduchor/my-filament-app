@@ -23,7 +23,11 @@ class AttendanceResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('student_id')
+                    // ->relationship('student', 'first_name')
+                    ->required(),
+                Forms\Components\DatePicker::make('date')->required(),
+                Forms\Components\Toggle::make('present')->default(true),
             ]);
     }
 
@@ -31,7 +35,9 @@ class AttendanceResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('student.first_name')->label('Student'),
+                Tables\Columns\TextColumn::make('date')->date(),
+                Tables\Columns\BooleanColumn::make('present'),
             ])
             ->filters([
                 //

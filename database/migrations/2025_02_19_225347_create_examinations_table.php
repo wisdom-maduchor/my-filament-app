@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('examinations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('subject_id');
+            $table->string('exam_name');
+            $table->date('exam_date');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->foreign('class_id')->references('id')->on('class_sections')->onDelete('cascade');
+            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->timestamps();
         });
     }

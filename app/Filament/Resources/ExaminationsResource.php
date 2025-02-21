@@ -23,7 +23,16 @@ class ExaminationsResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('class_section_id')
+                    // ->relationship('classSection', 'name')
+                    ->required(),
+                Forms\Components\Select::make('subject_id')
+                    // ->relationship('subject', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('exam_name')->required(),
+                Forms\Components\DatePicker::make('exam_date')->required(),
+                Forms\Components\TimePicker::make('start_time'),
+                Forms\Components\TimePicker::make('end_time'),
             ]);
     }
 
@@ -31,7 +40,10 @@ class ExaminationsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('exam_name'),
+                Tables\Columns\TextColumn::make('classSection.name')->label('Class'),
+                Tables\Columns\TextColumn::make('subject.name')->label('Subject'),
+                Tables\Columns\TextColumn::make('exam_date')->date(),
             ])
             ->filters([
                 //
