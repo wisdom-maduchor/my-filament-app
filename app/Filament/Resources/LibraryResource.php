@@ -23,7 +23,10 @@ class LibraryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')->required(),
+                Forms\Components\TextInput::make('author')->required(),
+                Forms\Components\TextInput::make('isbn'),
+                Forms\Components\TextInput::make('copies')->numeric()->default(1),
             ]);
     }
 
@@ -31,7 +34,10 @@ class LibraryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('author'),
+                Tables\Columns\TextColumn::make('isbn'),
+                Tables\Columns\TextColumn::make('copies'),
             ])
             ->filters([
                 //

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('libraries', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('author');
+            $table->string('isbn')->nullable();
+            $table->integer('copies')->default(1);
             $table->timestamps();
         });
     }
