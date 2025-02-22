@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FeesResource extends Resource
 {
-    protected static ?string $model = Fees::class;
+    protected static ?string $model = fees::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,7 +23,12 @@ class FeesResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('student_id')
+                    // ->relationship('student', 'first_name')
+                    ->required(),
+                Forms\Components\TextInput::make('amount')->numeric()->required(),
+                Forms\Components\DatePicker::make('payment_date')->required(),
+                Forms\Components\TextInput::make('payment_method'),
             ]);
     }
 
@@ -31,7 +36,10 @@ class FeesResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('student.first_name')->label('Student'),
+                Tables\Columns\TextColumn::make('amount'),
+                Tables\Columns\TextColumn::make('payment_date')->date(),
+                Tables\Columns\TextColumn::make('payment_method'),
             ])
             ->filters([
                 //
