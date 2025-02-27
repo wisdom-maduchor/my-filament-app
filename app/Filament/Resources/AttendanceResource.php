@@ -24,7 +24,7 @@ class AttendanceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('student_id')
-                    // ->relationship('student', 'first_name')
+                    ->relationship('student', 'first_name')
                     ->required(),
                 Forms\Components\DatePicker::make('date')->required(),
                 Forms\Components\Toggle::make('present')->default(true),

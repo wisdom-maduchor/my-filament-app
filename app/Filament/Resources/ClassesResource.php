@@ -26,7 +26,7 @@ class ClassesResource extends Resource
                 //
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\Select::make('teacher_id')
-                    // ->relationship('teacher', 'first_name')
+                    ->relationship('teacher', 'last_name')
                     ->label('Teacher In-Charge')
                     ->placeholder('Select a teacher'),
             ]);
@@ -38,7 +38,7 @@ class ClassesResource extends Resource
             ->columns([
                 //
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('teacher.first_name')->label('Teacher'),
+                Tables\Columns\TextColumn::make('teacher.last_name')->label('Teacher'),
             ])
             ->filters([
                 //

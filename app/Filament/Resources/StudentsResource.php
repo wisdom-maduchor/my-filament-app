@@ -33,7 +33,7 @@ class StudentsResource extends Resource
                 textInput::make('phone'),
                 DatePicker::make('date_of_birth'),
                 Select::make('classes_id')
-                    // ->relationship('classSection', 'name')
+                    ->relationship('classes', 'name')
                     ->placeholder('Select Class Section'),
             ]);
     }
@@ -46,7 +46,7 @@ class StudentsResource extends Resource
                 Tables\Columns\TextColumn::make('first_name'),
                 Tables\Columns\TextColumn::make('last_name'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('classSection.name')->label('Class'),
+                Tables\Columns\TextColumn::make('classes.name')->label('Class'),
             ])
             ->filters([
                 //
