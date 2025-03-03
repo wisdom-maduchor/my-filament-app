@@ -23,11 +23,11 @@ class ExaminationsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('class_section_id')
-                    // ->relationship('classSection', 'name')
+                Forms\Components\Select::make('class_id')
+                    ->relationship('classSection', 'name')
                     ->required(),
                 Forms\Components\Select::make('subject_id')
-                    // ->relationship('subject', 'name')
+                    ->relationship('subject', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('exam_name')->required(),
                 Forms\Components\DatePicker::make('exam_date')->required(),
