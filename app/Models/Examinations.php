@@ -15,7 +15,7 @@ class Examinations extends Model
 
     public function classSection()
     {
-        return $this->belongsTo(Classes::class);
+        return $this->belongsTo(Classes::class, 'class_id');
     }
 
     public function subject()
